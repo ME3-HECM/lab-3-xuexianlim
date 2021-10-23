@@ -9,6 +9,10 @@ void Interrupts_init(void)
 {
 	// turn on global interrupts, peripheral interrupts and the interrupt source 
 	// It's a good idea to turn on global interrupts last, once all other interrupt configuration is done.
+    PIE2bits.C1IE = 1; // comparator 1
+    IPR2bits.C1IP = 1; // high priority
+    INTCONbits.PEIE = 1; // peripheral interrupts
+    INTCONbits.GIE = 1; // global interrupts
 }
 
 /************************************
@@ -18,5 +22,9 @@ void Interrupts_init(void)
 void __interrupt(high_priority) HighISR()
 {
 	//add your ISR code here i.e. check the flag, do something (i.e. toggle an LED), clear the flag...
+    if (PIR2bits.C1IF == 1) {
+        LATHbits.LATH3 = 1;
+        PIR2bits.C1IF = 0;
+    }
 }
 
