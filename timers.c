@@ -24,4 +24,5 @@ void Timer0_init(void)
 unsigned int get16bitTMR0val(void)
 {
 	//add your code to get the full 16 bit timer value here
-}
+    return TMR0L | (TMR0H << 8);
+}    

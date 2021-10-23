@@ -20,6 +20,6 @@ void main(void) {
     Timer0_init();
     
     while (1) {
-        LEDarray_disp_bin(TMR0L);
+        LEDarray_disp_bin(get16bitTMR0val() >> 8);
     }
 }
