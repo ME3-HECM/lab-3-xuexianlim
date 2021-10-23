@@ -22,6 +22,8 @@ void main(void) {
     Interrupts_init();
     
     while (1) {
-		
+		if (PORTHbits.RH3 == 1) {
+            Sleep();
+        }
     }
 }
