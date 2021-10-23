@@ -6,6 +6,8 @@
                    projectFiles="true">
       <itemPath>comparator.h</itemPath>
       <itemPath>interrupts.h</itemPath>
+      <itemPath>LEDarray.h</itemPath>
+      <itemPath>timers.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -17,6 +19,8 @@
       <itemPath>comparator.c</itemPath>
       <itemPath>interrupts.c</itemPath>
       <itemPath>main.c</itemPath>
+      <itemPath>LEDarray.c</itemPath>
+      <itemPath>timers.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

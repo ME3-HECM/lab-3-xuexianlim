@@ -9,7 +9,7 @@ void Timer0_init(void)
     T0CON1bits.T0CS=0b010; // Fosc/4
     T0CON1bits.T0ASYNC=1; // see datasheet errata - needed to ensure correct operation when Fosc/4 used as clock source
     T0CON1bits.T0CKPS=0b1111; // 1:32768
-    T0CON0bits.T016BIT=0;	//8bit mode	
+    T0CON0bits.T016BIT=1;	//8bit mode	
 	
     // it's a good idea to initialise the timer registers so we know we are at 0
     TMR0H=0;            //write High reg first, update happens when low reg is written to
