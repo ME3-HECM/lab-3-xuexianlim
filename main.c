@@ -18,6 +18,8 @@ void main(void) {
 	//call your initialisation functions to set up the hardware modules
     LEDarray_init();
     Timer0_init();
+    TRISHbits.TRISH3 = 0;
+    LATHbits.LATH3 = 0;
     
     while (1) {
         LEDarray_disp_bin(get16bitTMR0val() >> 8);
