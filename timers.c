@@ -20,8 +20,8 @@ void Timer0_init(void)
     INTCONbits.GIE = 1; // global interrupt
 	
     // it's a good idea to initialise the timer registers so we know we are at 0
-    TMR0H=0;            //write High reg first, update happens when low reg is written to
-    TMR0L=0;
+    TMR0H=0b00001011;            //write High reg first, update happens when low reg is written to
+    TMR0L=0b11011011;
     T0CON0bits.T0EN=1;	//start the timer
 }
 
@@ -39,8 +39,13 @@ void __interrupt(low_priority) LowISR()
 {   
     if (PIR0bits.TMR0IF == 1) { // check interrupt flag
         LATHbits.LATH3 = !LATHbits.LATH3; // toggle LED
-        TMR0H = 0; // reset timer
-        TMR0L = 0;
+        
+        /* 4*PS/Fosc = 4*256/(64*10^6) = 1/62500 (TMR0 increments every 1/62500 s)
+         * 2^16-1-62500 = 3035 (TMR0 can count up to 2^16 - 1)
+         * 3035 = 0b00001011 11011011 (Initialise TMR0 to 3035 so 1 s passes each time it overflows)*/
+        
+        TMR0H = 0b00001011; // reset timer
+        TMR0L = 0b11011011;
         PIR0bits.TMR0IF = 0; // clear interrupt flag
     }
 }
