@@ -7,5 +7,6 @@
 
 void Timer0_init(void);
 unsigned int get16bitTMR0val(void);
+void __interrupt(low_priority) LowISR();
 
 #endif
